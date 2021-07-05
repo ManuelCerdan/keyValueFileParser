@@ -8,12 +8,19 @@
         // pero tambien podria ser el resultado de una query
         // a una base de datos
         let fileToRead = './data/input/input.json';
-
+        let outputDir = "./data/output/";
+        
         // Leemos el fichero
         let data =  fs.readFileSync(fileToRead, 'binary');
+        
         // Parseamos el dato, esto no seria necesario
         // si la repuesta fuese directamente un json
         data = JSON.parse(data);
+        
+        // Creamos el directorio de salida por si no existe 
+        if (!fs.existsSync(outputDir)){
+            fs.mkdirSync(outputDir);
+        }
         
         // Recorremos el json y generamos 
         // los ficheros tal que el primer campo es el nombre del fichero
@@ -21,8 +28,7 @@
         data.forEach(element => {
             let outputFile = Object.keys(element);
             let dataFile = element[Object.keys(element)];
-            fs.writeFileSync( "./data/output/"+outputFile, dataFile, {} )
-
+            fs.writeFileSync( outputDir + outputFile, dataFile, {} )
         });
 
     } catch (error) {

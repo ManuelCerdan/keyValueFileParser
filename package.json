@@ -4,7 +4,8 @@
   "description": "Creates files from a file or DB with  { key : value } fields",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "cleanOutput" : "node ./utils/cleanOutput.js"
   },
   "repository": {
     "type": "git",
